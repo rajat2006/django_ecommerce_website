@@ -24,6 +24,7 @@ SECRET_KEY = '0g8u)bj4(7+svu*8p@o@$ea42$sbv253xl!mf(_+%_3d3jef!b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -60,7 +61,7 @@ ROOT_URLCONF = 'eecommerce.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -111,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -122,8 +123,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-STATIC_URL = '/static/'
 
-TEMPLATES_DIR = (
-    os.path.join(BASE_DIR,'templates'),
-)
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+# os.path.dirname(var) gives the directory in which var is present
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "media")
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "static_root")
+
+STATICFILES_DIRS = (
+    os.path.join(os.path.dirname(BASE_DIR), "static", "static_files"),
+    )
